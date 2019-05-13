@@ -18,26 +18,26 @@ const div = document.createElement('div');
       }
    };
   // hide students//
-  for (let i = 0; i < getStudents.length; i +=1) {
-    getStudents[i].classList.add('no-display');
-  }
+  for (let i = 0; i < studentList.length; i +=1) {
+   studentList[i].classList.add('no-display');
+ }
    
   // if there are no students//
-  if (students.length === 0) {
+  if (studentList.length === 0) {
     let noStudent = '<h3 class="no-match">No Matching Students Found</h3>';
     let sibling = document.querySelector('.student-list');
     sibling.insertAdjacentHTML('afterEnd', noStudent);
   } else {
   
-    if (parseInt(pageNumber) === numberOfPages) {
-      for (let i = ((pageNumber * 10) - 10); i < ( (pageNumber * 10) - 10 + (students.length % 10) ); i += 1 ) {
+    if (parseInt(totalPages) === maxPerPage) {
+      for (let i = ((totalPages * 10) - 10); i < ( (totalPages * 10) - 10 + (students.length % 10) ); i += 1 ) {
         students[i].classList.remove('no-display');
       }
     } else {
       
       // show first 10 students on first page//
       
-      for (let i = ((pageNumber * 10) - 10); i <= ((pageNumber * 10) - 1); i += 1 ) {
+      for (let i = ((totalPages * 10) - 10); i <= ((totalPages * 10) - 1); i += 1 ) {
         students[i].classList.remove();
       }
     }
