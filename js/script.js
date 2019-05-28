@@ -7,7 +7,7 @@ const div = document.createElement('div');
 
 //create a show page function//
   showPage = (list, page) => {
-      let start = page * maxPerPage - 1;
+      let start =((page -1) * maxPerPage);
       let end = ((start + maxPerPage) - 1);
       for (let i = 0; i < list.length; i += 1) {
          list[i].style.display = 'none';
