@@ -1,4 +1,5 @@
 //create my global varibles//
+const page = document.querySelector('.page');
 const studentList = document.querySelectorAll('.student-item'); 
 const maxPerPage = 10; 
 let totalPages; 
@@ -6,8 +7,8 @@ const div = document.createElement('div');
 
 //create a show page function//
   showPage = (list, page) => {
-      let start = ((page - 1) * maxStudents);
-      let end = ((start + maxStudents) - 1);
+      let start = page * maxPerPage - 1;
+      let end = ((start + maxPerPage) - 1);
       for (let i = 0; i < list.length; i += 1) {
          list[i].style.display = 'none';
          if (i >= start && i <= end) {
@@ -50,7 +51,7 @@ const div = document.createElement('div');
          removePag.parentNode.removeChild(removePag);
       }
 
-      const pagesNum = Math.ceil(list.length / maxStudents);
+      const pagesNum = Math.ceil(list.length / maxPerPage);
       const pagination = document.createElement('div');
       const pagUl = document.createElement('ul');
       pagination.className = 'pagination';
@@ -72,7 +73,10 @@ const div = document.createElement('div');
     for (let i = 0; i < numberOfPages; i += 1) {
       paginationLi[i].addEventListener('click', function(event) {
         pageNumber = event.target.innerHTML;
-        showPage(pageNumber);
+        //showPage(pageNumber);
+        showPage(studentList, 1);
+        appendPageLinks(studentList);
+        console.log
       });
     }
   }
