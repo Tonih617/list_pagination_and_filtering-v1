@@ -42,7 +42,7 @@ const div = document.createElement('div');
         students[i].classList.remove();
       }
     }
-    
+  }
     // Append page links function//
    appendPageLinks = (list) => {
       
@@ -70,14 +70,12 @@ const div = document.createElement('div');
       
     // add eventListener on the page links//
     let paginationLi = document.querySelectorAll('.pagination li');
-    for (let i = 0; i < numberOfPages; i += 1) {
+    for (let i = 0; i <pagesNum; i += 1) {
       paginationLi[i].addEventListener('click', function(event) {
         pageNumber = event.target.innerHTML;
         //showPage(pageNumber);
         showPage(studentList, 1);
-        appendPageLinks(studentList);
-        console.log
       });
     }
   }
-}
+appendPageLinks(studentList);
