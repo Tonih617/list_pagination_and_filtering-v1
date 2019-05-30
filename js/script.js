@@ -51,7 +51,7 @@ const div = document.createElement('div');
          removePag.parentNode.removeChild(removePag);
       }
 
-      const pagesNum = Math.ceil(list.length / maxPerPage);
+      const pageNum = Math.ceil(list.length / maxPerPage);
       const pagination = document.createElement('div');
       const pagUl = document.createElement('ul');
       pagination.className = 'pagination';
@@ -59,23 +59,24 @@ const div = document.createElement('div');
       pagination.appendChild(pagUl);
      
       // append li elements based on number of pages it may use//
-      for (let i = 1; i < pagesNum + 1; i += 1) {
+      for (let i = 1; i < pageNum + 1; i += 1) {
          let liContent = `
-               <li>
-                  <a href="#">${i}</a>
-               </li>
-               `;
-         pagUl.innerHTML += liContent;
-      };
-      
+         <li>
+         <a href="#">${i}</a>
+         </li>
+         `;
+         pagUl.innerHTML += liContent; 
+         };
+        
     // add eventListener on the page links//
     let paginationLi = document.querySelectorAll('.pagination li');
-    for (let i = 0; i <pagesNum; i += 1) {
+    for (let i = 0; i <pageNum; i += 1) {
       paginationLi[i].addEventListener('click', function(event) {
-        pageNumber = event.target.innerHTML;
+        pageNum = event.target.innerHTML;
         //showPage(pageNumber);
         showPage(studentList, 1);
+        
       });
     }
   }
-appendPageLinks(studentList);
+  appendPageLinks(studentList);
