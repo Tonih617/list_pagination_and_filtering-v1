@@ -51,32 +51,54 @@ const div = document.createElement('div');
          removePag.parentNode.removeChild(removePag);
       }
 
-      const pageNum = Math.ceil(list.length / maxPerPage);
+      let pageNum = Math.ceil(list.length / maxPerPage);
       const pagination = document.createElement('div');
       const pagUl = document.createElement('ul');
       pagination.className = 'pagination';
       page.appendChild(pagination);
       pagination.appendChild(pagUl);
-     
+
       // append li elements based on number of pages it may use//
-      for (let i = 1; i < pageNum + 1; i += 1) {
-         let liContent = `
-         <li>
-         <a href="#">${i}</a>
-         </li>
-         `;
-         pagUl.innerHTML += liContent; 
-         };
-        
-    // add eventListener on the page links//
-    let paginationLi = document.querySelectorAll('.pagination li');
-    for (let i = 0; i <pageNum; i += 1) {
-      paginationLi[i].addEventListener('click', function(event) {
-        pageNum = event.target.innerHTML;
-        //showPage(pageNumber);
-        showPage(studentList, 1);
-        
-      });
-    }
+for (let i = 1; i < pageNum + 1; i += 1) {
+   let liContent = "";
+   if(i == 0) {
+   liContent = `
+   <li>
+   <a href="#" class="active">${i}</a>
+   </li>
+   `;
+   }
+   liContent = `
+   <li>
+   <a href="#">${i}</a>
+   </li>
+   `;
+   pagUl.innerHTML += liContent;
+   };
+   // add eventListener on the page links//
+   let paginationLi = document.querySelectorAll('.pagination li');
+   for (let i = 0; i <pageNum; i += 1) {
+   paginationLi[i].addEventListener('click', function(event) {
+   pageNum = event.target.innerHTML;
+   //showPage(pageNumber);
+   showPage(studentList,i+1);
+   removeAllActive();
+   event.target.classList.add("active");
+   });
+   }
+   }
+   
+     
+      
+
+
+  const removeAllActive =() => {
+  const AllLinks =  document.querySelectorAll('.pagination a'); 
+  for (let link of AllLinks){
+     link.classList.remove("active");
+     console.log(link);
   }
+
+}
   appendPageLinks(studentList);
+  showPage(studentList,1);
