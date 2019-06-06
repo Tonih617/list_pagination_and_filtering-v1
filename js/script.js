@@ -61,18 +61,20 @@ const div = document.createElement('div');
       // append li elements based on number of pages it may use//
 for (let i = 1; i < pageNum + 1; i += 1) {
    let liContent = "";
-   if(i == 0) {
+   if(i == 1) {
+      
    liContent = `
    <li>
    <a href="#" class="active">${i}</a>
    </li>
    `;
-   }
+   }else{ 
    liContent = `
    <li>
    <a href="#">${i}</a>
    </li>
    `;
+   }
    pagUl.innerHTML += liContent;
    };
    // add eventListener on the page links//
